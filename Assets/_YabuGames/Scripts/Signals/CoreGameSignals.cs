@@ -13,6 +13,9 @@ namespace _YabuGames.Scripts.Signals
         public UnityAction OnLevelFail=delegate { };
         public UnityAction OnSave = delegate { };
         public UnityAction<int,bool> OnSpawnCoins=delegate { };
+        public UnityAction<bool> OnDragging = delegate { };
+        public UnityAction AllowAllyMerging = delegate { };
+        
 
         #region Singleton
         private void Awake()
