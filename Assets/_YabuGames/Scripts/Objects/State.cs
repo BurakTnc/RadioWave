@@ -37,7 +37,8 @@ namespace _YabuGames.Scripts.Objects
 
         public void Interact(GameObject obj)
         {
-            obj.transform.SetPositionAndRotation(radioPosition.position, radioPosition.rotation);
+            obj.transform.position = transform.position + Vector3.up * .5f;
+            // obj.transform.SetPositionAndRotation(transform.position, transform.rotation);
         }
 
         public void SetZone(bool onRange,float delay)

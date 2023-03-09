@@ -24,10 +24,7 @@ namespace _YabuGames.Scripts.Controllers
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out IInteractable state))
-            {
-                state.Interact(gameObject);
-            }
+            
         }
 
         private void OnTriggerStay(Collider other)
@@ -37,6 +34,12 @@ namespace _YabuGames.Scripts.Controllers
                 if(!_canMerge) return;
                 radio.Merge(_radioController);
                 _mergeable.Disappear();
+                _canMerge = false;
+            }
+            if (other.TryGetComponent(out IInteractable state))
+            {
+                if(!_canMerge) return;
+                state.Interact(gameObject);
                 _canMerge = false;
             }
         }
