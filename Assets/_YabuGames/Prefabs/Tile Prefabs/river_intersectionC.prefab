@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 1733004550283464230}
   - component: {fileID: 3432593807659958659}
   - component: {fileID: 596712280257197385}
-  - component: {fileID: -4518209422601929298}
-  - component: {fileID: 7287375730809508137}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: river_intersectionC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,32 +86,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-4518209422601929298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389095333081404572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de00f5fb1094489b3e23de565a5b2c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radioPosition: {fileID: 0}
-  onRangeMat: {fileID: 0}
-  offRangeMat: {fileID: 0}
---- !u!64 &7287375730809508137
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389095333081404572}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6762986352432531398, guid: f56f305a1231f4750a37c635f6518aa5, type: 3}

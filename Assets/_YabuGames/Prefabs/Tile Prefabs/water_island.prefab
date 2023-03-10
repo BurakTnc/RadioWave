@@ -94,9 +94,7 @@ GameObject:
   - component: {fileID: 5474304155988503989}
   - component: {fileID: 8959763254166200848}
   - component: {fileID: 6607781744164493018}
-  - component: {fileID: -1692665172149443944}
-  - component: {fileID: -2805834238177940741}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: water_island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,35 +171,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-1692665172149443944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4662195437952038671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de00f5fb1094489b3e23de565a5b2c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radioPosition: {fileID: 0}
-  onRangeMat: {fileID: 0}
-  offRangeMat: {fileID: 0}
---- !u!64 &-2805834238177940741
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4662195437952038671}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6721380073247500279, guid: b6a4273f7f60547899c1ee1bb9b92555, type: 3}
 --- !u!1 &6919875929961238943
 GameObject:
   m_ObjectHideFlags: 0

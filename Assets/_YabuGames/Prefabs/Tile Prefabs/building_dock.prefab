@@ -346,9 +346,7 @@ GameObject:
   - component: {fileID: 4644989089786251363}
   - component: {fileID: 8636087016910047174}
   - component: {fileID: 5781914021382435596}
-  - component: {fileID: -1432724077624496506}
-  - component: {fileID: -2695203402735458212}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: building_dock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,35 +426,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-1432724077624496506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5421630655038886617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de00f5fb1094489b3e23de565a5b2c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radioPosition: {fileID: 0}
-  onRangeMat: {fileID: 0}
-  offRangeMat: {fileID: 0}
---- !u!64 &-2695203402735458212
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5421630655038886617}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6644466861443831405, guid: a2181915094914ee3b853dfd353429f9, type: 3}
 --- !u!1 &6815463219339240857
 GameObject:
   m_ObjectHideFlags: 0
