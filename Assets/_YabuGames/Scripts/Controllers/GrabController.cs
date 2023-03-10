@@ -50,7 +50,7 @@ namespace _YabuGames.Scripts.Controllers
         private void OnMouseDown()
         {
             if (_isGrabbing) return;
-            
+            Debug.Log("holddde");
             _radioScanner.SetScanningBool(false);
             _collisionController.SetMergeBool(false);
             _startPosition = _cam.WorldToScreenPoint(transform.position);
@@ -60,24 +60,23 @@ namespace _YabuGames.Scripts.Controllers
 
         }
 
-        private void OnMouseDrag()
-        {
-
-            if (_cam != null)
-            {
-                Vector3 lastPos = new Vector3(Input.mousePosition.x, _startPosition.y, Input.mousePosition.y);
-                var targetPos=_cam.ScreenToWorldPoint(lastPos) + _distanceOffset;
-                transform.position = new Vector3(targetPos.x, transform.position.y, targetPos.z);
+//         private void OnMouseDrag()
+//         {
+//
+//             if (_cam != null)
+//             {
+//                 Vector3 lastPos = new Vector3(Input.mousePosition.x, _startPosition.y, Input.mousePosition.y);
+//                 //var targetPos=_cam.ScreenToWorldPoint(lastPos) + _distanceOffset;
+//                 //transform.position = new Vector3(targetPos.x, transform.position.y, targetPos.z);
 //                 Vector3 targetPos = _cam.ScreenToWorldPoint(lastPos) + _distanceOffset;
 //                 Vector3 dir = targetPos - transform.position;
 //                 float dist = dir.magnitude;
 //                 Vector3.Normalize(dir);
 // // change 1.0f to something else if you want:
-//                 transform.position += new Vector3(dir.x * dist * .000001f, 0, dir.z * dist * .000001f);
-
-            }
+//                 transform.position += new Vector3(dir.x * dist * .0001f, 0, dir.z * dist * .0001f);
+//
+//             }
 
             
         }
     }
-}

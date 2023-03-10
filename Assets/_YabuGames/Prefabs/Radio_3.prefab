@@ -26020,7 +26020,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 13
+  m_VersionIndex: 85
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -26073,10 +26073,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   scanDelay: 1
-  scanPeriod: 300
+  scanParticleSize: 300
   areaGrowingMultiplier: 0.01
   scanParticle: {fileID: 191608, guid: 087da436576d35542825d392925d79c4, type: 3}
-  scanSizeMultiplier: 0.05
+  scanSize: 50
+  _tempRadius: 0
+  _mainRadius: 0
 --- !u!114 &4297766081118572240
 MonoBehaviour:
   m_ObjectHideFlags: 0

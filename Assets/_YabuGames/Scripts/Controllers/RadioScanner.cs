@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _YabuGames.Scripts.Interfaces;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _YabuGames.Scripts.Controllers
 {
@@ -11,18 +12,18 @@ namespace _YabuGames.Scripts.Controllers
     {
         [SerializeField] private LayerMask layer;
         [SerializeField] private float scanDelay = .3f;
-        [SerializeField] private float scanPeriod = 300;
+        [FormerlySerializedAs("scanPeriod")] [SerializeField] private float scanParticleSize = 300;
         [SerializeField] private float areaGrowingMultiplier = 0.01f;
         [SerializeField] private GameObject scanParticle;
-        [SerializeField] private float scanSizeMultiplier = .05f;
+        [SerializeField] private float scanSize = 50;
 
-        private List<IInteractable> _onlineStates = new List<IInteractable>();
+        private readonly List<IInteractable> _onlineStates = new List<IInteractable>();
         private RadioController _radioController;
         private int _radioLevel;
         private float _rangeMultiplier;
         private float _timer;
         private bool _isScanning;
-        private float _tempRadius, _mainRadius;
+       [SerializeField] private float _tempRadius, _mainRadius;
         private float _particleTimer = 0;
 
         private void Awake()
@@ -36,6 +37,7 @@ namespace _YabuGames.Scripts.Controllers
             _rangeMultiplier = _radioController.rangeMultiplier;
             _mainRadius = _radioLevel * _rangeMultiplier;
             _isScanning = true;
+            _timer = 50;
         }
 
         private void Update()
@@ -49,7 +51,7 @@ namespace _YabuGames.Scripts.Controllers
         {
             if (!_isScanning) return;
             
-            if (_timer <= scanPeriod)
+            if (_tempRadius < scanSize)
             {
                 ScanTheArea();
                 _timer += scanDelay;
@@ -61,7 +63,7 @@ namespace _YabuGames.Scripts.Controllers
                 _timer = 0;
             }
             
-            _timer = Math.Clamp(_timer, 0, scanPeriod+scanDelay);
+            _timer = Math.Clamp(_timer, 0, scanParticleSize+scanDelay);
         }
 
         private void ScanTheArea()
@@ -79,19 +81,19 @@ namespace _YabuGames.Scripts.Controllers
                     }
                     delay += 0.1f;
                 }
-                    
-            _tempRadius += areaGrowingMultiplier;
-            _tempRadius = Mathf.Clamp(_tempRadius, 0, 300);
+
+            _tempRadius += areaGrowingMultiplier * Time.deltaTime;
+            _tempRadius = Mathf.Clamp(_tempRadius, 0, scanSize+10);
         }
 
         private void SpawnScanParticle()
         {
             if (_particleTimer > 0) return;
-            _particleTimer += 2;
+            _particleTimer += 1.5f;
             var particle = Instantiate(scanParticle);
             particle.transform.localScale = Vector3.zero;
             particle.transform.position = transform.position;
-            particle.transform.DOScale(Vector3.one * scanPeriod / 100, 5);
+            particle.transform.DOScale(Vector3.one * scanParticleSize / 100, 5).SetEase(Ease.InSine);
         }
 
         private void StopScanning()
@@ -100,7 +102,7 @@ namespace _YabuGames.Scripts.Controllers
             for (var i = _onlineStates.Count-1; i > -1; i--)
             {
                 _onlineStates[i].SetZone(false,delay);
-                delay += 0.1f;
+                delay += 0.03f;
             }
             _onlineStates.Clear();
         }

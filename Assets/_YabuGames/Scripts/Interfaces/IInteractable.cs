@@ -6,5 +6,6 @@ namespace _YabuGames.Scripts.Interfaces
     {
         void Interact(GameObject obj);
         void SetZone(bool onRange,float delay);
+        void Select();
     }
 }

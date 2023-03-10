@@ -7,59 +7,67 @@ namespace _YabuGames.Scripts.Objects
 {
     public class State : MonoBehaviour,IInteractable
     {
-        [SerializeField] private Transform radioPosition;
-        [SerializeField] private Material onRangeMat, offRangeMat;
+        [SerializeField] private Material offRangeMat;
 
+        private GameObject _selectionEffect;
         private MeshRenderer _renderer;
-        private List<Material> _defaultMaterials = new List<Material>();
-        private Material _currentMaterial;
+        private readonly List<Material> _defaultMaterials = new List<Material>();
         private bool _isOnline;
+        private bool _isSelected;
 
         private void Awake()
         {
             _renderer = GetComponent<MeshRenderer>();
-            _currentMaterial = new Material(_renderer.material);
-            for (int i = 0; i < _renderer.materials.Length; i++)
+            foreach (var t in _renderer.materials)
             {
-                var mat = new Material(_renderer.materials[i]);
+                var mat = new Material(t);
                 _defaultMaterials.Add(mat);
             }
-           
         }
 
         private void Start()
         {
-            for (int i = 0; i < _renderer.materials.Length; i++)
+            foreach (var t in _renderer.materials)
             {
-                _renderer.materials[i].color = offRangeMat.color;
+                t.color = offRangeMat.color;
             }
         }
 
         public void Interact(GameObject obj)
         {
             obj.transform.position = transform.position + Vector3.up * .5f;
-            // obj.transform.SetPositionAndRotation(transform.position, transform.rotation);
         }
 
         public void SetZone(bool onRange,float delay)
         {
             if (onRange)
             {
-                //_renderer.material.DOColor(_currentMaterial.color, .7f).SetEase(Ease.InSine).SetDelay(delay);
-
-                for (int i = 0; i < _renderer.materials.Length; i++)
+                for (var i = 0; i < _renderer.materials.Length; i++)
                 {
                     _renderer.materials[i].DOColor(_defaultMaterials[i].color, .7f).SetEase(Ease.InSine).SetDelay(delay);
                 }
             }
             else
             {
-                for (int i = 0; i < _renderer.materials.Length; i++)
+                for (var i = 0; i < _renderer.materials.Length; i++)
                 {
                     _renderer.materials[i].DOColor(offRangeMat.color, .7f).SetEase(Ease.InSine).SetDelay(delay);
                 }
             }
          
+        }
+
+        public void Select()
+        {
+            _isSelected = !_isSelected;
+            if (_isSelected)
+            {
+                transform.DOMoveY(.1f, .3f).SetEase(Ease.OutBack).SetRelative(true);
+            }
+            else
+            {
+                transform.DOMoveY(-.1f, .3f).SetEase(Ease.InBack).SetRelative(true);
+            }
         }
     }
 }
