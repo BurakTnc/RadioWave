@@ -11,7 +11,6 @@ Material:
   m_Shader: {fileID: 4800000, guid: f8d49205b3b0a644195633020367689d, type: 3}
   m_ValidKeywords:
   - TCP2_DISABLE_WRAPPED_LIGHT
-  - TCP2_STYLIZED_FRESNEL
   m_InvalidKeywords:
   - TCP2_UV_NORMALS_FULL
   m_LightmapFlags: 4
@@ -82,15 +81,15 @@ Material:
     - _Offset2: 0
     - _Outline: 1
     - _Parallax: 0.02
-    - _RampSmooth: 1
-    - _RampSmoothAdd: 0.75
-    - _RampThreshold: 0.48
-    - _RimMax: 0.85
-    - _RimMin: 0.6
-    - _RimStrength: 0.64
+    - _RampSmooth: 0.2
+    - _RampSmoothAdd: 1
+    - _RampThreshold: 0.18
+    - _RimMax: 0.09
+    - _RimMin: 0
+    - _RimStrength: 1
     - _SmoothnessTextureChannel: 0
-    - _SpecBlend: 1
-    - _SpecSmooth: 1
+    - _SpecBlend: 0
+    - _SpecSmooth: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TCP2_DISABLE_WRAPPED_LIGHT: 1
@@ -98,7 +97,7 @@ Material:
     - _TCP2_OUTLINE_TEXTURED: 0
     - _TCP2_RAMPTEXT: 0
     - _TCP2_SPEC_TOON: 0
-    - _TCP2_STYLIZED_FRESNEL: 1
+    - _TCP2_STYLIZED_FRESNEL: 0
     - _TCP2_ZSMOOTH_ON: 0
     - _TexLod: 5
     - _UVSec: 0
