@@ -3,7 +3,22 @@ guid: 27539bb05b7964e4a8de47c5aafec13a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dirt
+    second: {fileID: 2100000, guid: 774eb6ad9cf7d4979b19f9d50addafd4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: snow
+    second: {fileID: 2100000, guid: 0e0e59743086c4c23aa1a60aba094b6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stone
+    second: {fileID: 2100000, guid: b2e5d014b5f374caca5ab4308dfd9fdd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
