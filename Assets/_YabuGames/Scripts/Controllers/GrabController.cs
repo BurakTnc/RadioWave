@@ -44,14 +44,13 @@ namespace _YabuGames.Scripts.Controllers
             //if(!_isGrabbing) return;
             CoreGameSignals.Instance.OnDragging?.Invoke(false);
             _collisionController.SetMergeBool(true);
-          _radioScanner.SetScanningBool(true);
+          //_radioScanner.SetScanningBool(true);
         }
 
         private void OnMouseDown()
         {
             if (_isGrabbing) return;
-            Debug.Log("holddde");
-            _radioScanner.SetScanningBool(false);
+            //_radioScanner.SetScanningBool(false);
             _collisionController.SetMergeBool(false);
             _startPosition = _cam.WorldToScreenPoint(transform.position);
             _distanceOffset = transform.position -

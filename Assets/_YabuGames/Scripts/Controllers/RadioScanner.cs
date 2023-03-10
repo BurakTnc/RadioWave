@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _YabuGames.Scripts.Interfaces;
+using _YabuGames.Scripts.Objects;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,33 +12,23 @@ namespace _YabuGames.Scripts.Controllers
     public class RadioScanner : MonoBehaviour
     {
         [SerializeField] private LayerMask layer;
-        [SerializeField] private float scanDelay = .3f;
         [FormerlySerializedAs("scanPeriod")] [SerializeField] private float scanParticleSize = 300;
         [SerializeField] private float areaGrowingMultiplier = 0.01f;
         [SerializeField] private GameObject scanParticle;
         [SerializeField] private float scanSize = 50;
 
         private readonly List<IInteractable> _onlineStates = new List<IInteractable>();
-        private RadioController _radioController;
-        private int _radioLevel;
-        private float _rangeMultiplier;
-        private float _timer;
         private bool _isScanning;
-       [SerializeField] private float _tempRadius, _mainRadius;
-        private float _particleTimer = 0;
+        private float _tempRadius;
+        private float _particleTimer;
 
         private void Awake()
         {
-            _radioController = GetComponent<RadioController>();
         }
 
         private void Start()
         {
-            _radioLevel = _radioController.radioLevel;
-            _rangeMultiplier = _radioController.rangeMultiplier;
-            _mainRadius = _radioLevel * _rangeMultiplier;
             _isScanning = true;
-            _timer = 50;
         }
 
         private void Update()
@@ -54,16 +45,11 @@ namespace _YabuGames.Scripts.Controllers
             if (_tempRadius < scanSize)
             {
                 ScanTheArea();
-                _timer += scanDelay;
             }
-
             else
             {
                 _tempRadius = 0;
-                _timer = 0;
             }
-            
-            _timer = Math.Clamp(_timer, 0, scanParticleSize+scanDelay);
         }
 
         private void ScanTheArea()
@@ -75,9 +61,11 @@ namespace _YabuGames.Scripts.Controllers
                 {
                     if (!_onlineStates.Contains(state.GetComponent<IInteractable>()))
                     {
-                        stateScript.SetZone(true,delay);
-                        _onlineStates.Add(state.GetComponent<IInteractable>());
-                        
+                        if (!state.gameObject.GetComponent<State>().IsOnline())
+                        {
+                            stateScript.SetZone(true,delay);
+                            _onlineStates.Add(state.GetComponent<IInteractable>());  
+                        }
                     }
                     delay += 0.1f;
                 }
@@ -88,8 +76,10 @@ namespace _YabuGames.Scripts.Controllers
 
         private void SpawnScanParticle()
         {
+            if(!_isScanning) return;
+            
             if (_particleTimer > 0) return;
-            _particleTimer += 1.5f;
+            _particleTimer += 3f;
             var particle = Instantiate(scanParticle);
             particle.transform.localScale = Vector3.zero;
             particle.transform.position = transform.position;
@@ -102,14 +92,13 @@ namespace _YabuGames.Scripts.Controllers
             for (var i = _onlineStates.Count-1; i > -1; i--)
             {
                 _onlineStates[i].SetZone(false,delay);
-                delay += 0.03f;
+                delay += 0.07f;
             }
             _onlineStates.Clear();
         }
 
         private void OnDrawGizmos()
         {
-            var range = _rangeMultiplier * _radioLevel;
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, _tempRadius);
         }
@@ -117,7 +106,7 @@ namespace _YabuGames.Scripts.Controllers
         public void SetScanningBool(bool onIdle)
         {
             _tempRadius = 0;
-            _timer = 0;
+            _particleTimer = 0;
             _isScanning = onIdle;
             StopScanning();
         }

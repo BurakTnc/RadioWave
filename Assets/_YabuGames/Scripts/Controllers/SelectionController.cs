@@ -1,5 +1,7 @@
 using System;
 using _YabuGames.Scripts.Interfaces;
+using _YabuGames.Scripts.Objects;
+using _YabuGames.Scripts.Signals;
 using UnityEngine;
 
 namespace _YabuGames.Scripts.Controllers
@@ -42,9 +44,11 @@ namespace _YabuGames.Scripts.Controllers
                     _selectedRadio = radio.gameObject;
                     if (_selectedState)
                     {
+                        CoreGameSignals.Instance.OnUpgrade?.Invoke(false);
                         _selectedState.GetComponent<IInteractable>().Select();
                         _selectedState = null;
                     }
+                    CoreGameSignals.Instance.OnGrid?.Invoke(true);
                 }
 
                 if (objectHit.TryGetComponent(out IInteractable state))
@@ -63,14 +67,32 @@ namespace _YabuGames.Scripts.Controllers
                             var currentID = _selectedState.GetInstanceID();
                             var isSame = id == currentID;
                             _selectedState = null;
+                            CoreGameSignals.Instance.OnUpgrade?.Invoke(false);
+
                             if(isSame) return;
                             
                             _selectedState = objectHit.gameObject;
+                            var stateController = _selectedState.GetComponent<State>();
+                            var upgradeCost = stateController.GiveUpgradeCost();
+                            var radioLevel = stateController.GiveRadioLevel();
+                            var hasRadio = stateController.GiveRadioBool();
+                            
+                            CoreGameSignals.Instance.GetUpgradeStats?.Invoke(upgradeCost,radioLevel,hasRadio);
+                            CoreGameSignals.Instance.OnUpgrade?.Invoke(true);
+                            
                             state.Select();
                         }
                         else
                         {
                             _selectedState = objectHit.gameObject;
+                            
+                            var stateController = _selectedState.GetComponent<State>();
+                            var upgradeCost = stateController.GiveUpgradeCost();
+                            var radioLevel = stateController.GiveRadioLevel();
+                            var hasRadio = stateController.GiveRadioBool();
+                            
+                            CoreGameSignals.Instance.GetUpgradeStats?.Invoke(upgradeCost,radioLevel,hasRadio);
+                            CoreGameSignals.Instance.OnUpgrade?.Invoke(true);
                             state.Select();
                         }
                     }
@@ -80,6 +102,8 @@ namespace _YabuGames.Scripts.Controllers
                     //_selectedRadio = null;
                     if (_selectedState)
                     {
+                        Debug.Log(objectHit.name);
+                        CoreGameSignals.Instance.OnUpgrade?.Invoke(false);
                         _selectedState.GetComponent<IInteractable>().Select();
                         _selectedState = null;
                     }

@@ -11,7 +11,6 @@ namespace _YabuGames.Scripts.Controllers
     {
 
         public int radioLevel = 1;
-        public float rangeMultiplier = 1.5f;
 
         [SerializeField] private GameObject[] radios;
         
@@ -33,15 +32,12 @@ namespace _YabuGames.Scripts.Controllers
             radio.transform.SetPositionAndRotation(transform.position, transform.rotation);
             
             var effectScale = radio.transform.localScale + Vector3.one*.3f;
-            radio.transform.DOScale(effectScale, .5f).SetEase(Ease.InSine).SetLoops(2, LoopType.Yoyo);
+            radio.transform.DOScale(effectScale, .5f).SetEase(Ease.OutBack).SetLoops(2, LoopType.Yoyo);
         }
         public void Merge(RadioController radio)
         {
-            var equal = radioLevel == radio.radioLevel;
-            if(!equal) return;
-            
             SpawnNewRadio();
-            transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InBack);
+            transform.DOScale(Vector3.zero, .3f).SetEase(Ease.InBack);
             Destroy(gameObject,.5f);
         }
 
