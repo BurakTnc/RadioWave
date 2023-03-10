@@ -14,7 +14,7 @@ namespace _YabuGames.Scripts.Managers
         [SerializeField] private GameObject mainPanel, gamePanel;
         [SerializeField] private TextMeshProUGUI[] moneyText;
         [SerializeField] private GameObject upgradePanel;
-        [SerializeField] private TextMeshProUGUI upgradePriceText, buyPriceText, radioLevelText;
+        [SerializeField] private TextMeshProUGUI upgradePriceText, buyPriceText;
         [SerializeField] private Button upgradeButton, buyButton;
 
         private bool _isUpgradeOpen;
@@ -79,13 +79,13 @@ namespace _YabuGames.Scripts.Managers
             upgradePanel.transform.DOKill();
             if (_isUpgradeOpen)
             {
-                upgradePanel.GetComponent<RectTransform>().DOAnchorPosY(0, .5f).SetEase(Ease.OutBack)
+                upgradePanel.GetComponent<RectTransform>().DOAnchorPosY(-137, .5f).SetEase(Ease.OutBack)
                     .OnComplete(SetBool);
             }
             else
             {
                 
-                upgradePanel.GetComponent<RectTransform>().DOAnchorPosY(-500, .5f).SetEase(Ease.InBack)
+                upgradePanel.GetComponent<RectTransform>().DOAnchorPosY(-350, .5f).SetEase(Ease.InBack)
                     .OnComplete(SetBool);
             }
         }
@@ -107,15 +107,13 @@ namespace _YabuGames.Scripts.Managers
             }
         }
 
-        private void SetUpgradeStats(int upgradePrice,int radioLevel,bool hasRadio)
+        private void SetUpgradeStats(int upgradePrice,bool hasRadio)
         {
-            buyButton.interactable = !hasRadio;
-            upgradeButton.interactable = hasRadio;
+            buyButton.gameObject.SetActive(!hasRadio);
+            upgradeButton.gameObject.SetActive(hasRadio);
             upgradePriceText.text = "";
             buyPriceText.text = "500";
-            radioLevelText.text = "";
             if(!hasRadio) return;
-            radioLevelText.text = "Radio Lvl " + radioLevel;
             buyPriceText.text = "";
             upgradePriceText.text = upgradePrice.ToString();
         }

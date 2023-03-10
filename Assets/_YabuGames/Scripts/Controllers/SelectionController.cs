@@ -38,6 +38,7 @@ namespace _YabuGames.Scripts.Controllers
                     if (_selectedRadio)
                     {
                         _selectedRadio = null;
+                        CoreGameSignals.Instance.OnGrid?.Invoke(false);
                         return;
                     }
                     
@@ -74,10 +75,9 @@ namespace _YabuGames.Scripts.Controllers
                             _selectedState = objectHit.gameObject;
                             var stateController = _selectedState.GetComponent<State>();
                             var upgradeCost = stateController.GiveUpgradeCost();
-                            var radioLevel = stateController.GiveRadioLevel();
                             var hasRadio = stateController.GiveRadioBool();
                             
-                            CoreGameSignals.Instance.GetUpgradeStats?.Invoke(upgradeCost,radioLevel,hasRadio);
+                            CoreGameSignals.Instance.GetUpgradeStats?.Invoke(upgradeCost,hasRadio);
                             CoreGameSignals.Instance.OnUpgrade?.Invoke(true);
                             
                             state.Select();
@@ -88,10 +88,9 @@ namespace _YabuGames.Scripts.Controllers
                             
                             var stateController = _selectedState.GetComponent<State>();
                             var upgradeCost = stateController.GiveUpgradeCost();
-                            var radioLevel = stateController.GiveRadioLevel();
                             var hasRadio = stateController.GiveRadioBool();
                             
-                            CoreGameSignals.Instance.GetUpgradeStats?.Invoke(upgradeCost,radioLevel,hasRadio);
+                            CoreGameSignals.Instance.GetUpgradeStats?.Invoke(upgradeCost,hasRadio);
                             CoreGameSignals.Instance.OnUpgrade?.Invoke(true);
                             state.Select();
                         }

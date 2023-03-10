@@ -15,12 +15,11 @@ GameObject:
   - component: {fileID: 8814975650582753584}
   - component: {fileID: 3718693332061479510}
   - component: {fileID: 3431251259828989908}
-  - component: {fileID: 9166805448661456175}
   - component: {fileID: 1736888492900287711}
   - component: {fileID: 1237629468632114091}
   m_Layer: 0
   m_Name: Radio_2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29145,7 +29144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radioLevel: 2
-  rangeMultiplier: 1.5
   radios:
   - {fileID: 1914991185592008854, guid: 29792db6045ff4de8929bbd255e77d2a, type: 3}
   - {fileID: 1914991185592008854, guid: 29792db6045ff4de8929bbd255e77d2a, type: 3}
@@ -29166,25 +29164,10 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
-  scanDelay: 1
   scanParticleSize: 200
   areaGrowingMultiplier: 0.5
   scanParticle: {fileID: 191608, guid: 087da436576d35542825d392925d79c4, type: 3}
   scanSize: 2.5
-  _tempRadius: 0
-  _mainRadius: 0
---- !u!114 &9166805448661456175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657857766611474024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4407db57d424a4df88b8230eba26269c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1736888492900287711
 MonoBehaviour:
   m_ObjectHideFlags: 0

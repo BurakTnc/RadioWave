@@ -31,7 +31,7 @@ namespace _YabuGames.Scripts.Objects
                 _defaultMaterials.Add(mat);
             }
             
-            //_selectionEffect = transform.GetChild(0).gameObject;
+            _selectionEffect = transform.GetChild(0).gameObject;
         }
 
         private void OnEnable()
@@ -157,7 +157,6 @@ namespace _YabuGames.Scripts.Objects
         }
 
         public int GiveUpgradeCost() => _upgradePrice;
-        public int GiveRadioLevel() => _radioLevel;
         public bool GiveRadioBool() => _hasRadio;
         public bool IsOnline() => _isOnline;
     }
