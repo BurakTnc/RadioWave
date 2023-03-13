@@ -82,9 +82,9 @@ Material:
     - _Offset2: 0
     - _Outline: 1
     - _Parallax: 0.02
-    - _RampSmooth: 0.68
-    - _RampSmoothAdd: 1
-    - _RampThreshold: 0.63
+    - _RampSmooth: 1
+    - _RampSmoothAdd: 0
+    - _RampThreshold: 0.263
     - _RimMax: 0.85
     - _RimMin: 0.6
     - _RimStrength: 0.64
