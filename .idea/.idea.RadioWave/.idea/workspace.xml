@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b60ceb5f-3769-40b7-8506-879c7878c827" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RadioWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RadioWave/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Objects/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Objects/State.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +89,7 @@
       <workItem from="1678362724297" duration="5000" />
       <workItem from="1678442087669" duration="17773000" />
       <workItem from="1678476962669" duration="1725000" />
-      <workItem from="1678699603765" duration="4326000" />
+      <workItem from="1678699603765" duration="4653000" />
     </task>
     <servers />
   </component>

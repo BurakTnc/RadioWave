@@ -137,7 +137,7 @@ namespace _YabuGames.Scripts.Objects
             _upgradePrice = _radioLevel * 500;
             _hasRadio = true;
             GetStats(_upgradePrice,_radioLevel,_hasRadio);
-            obj.transform.DOMove(transform.position + Vector3.up * .5f, .5f).SetEase(Ease.OutSine)
+            obj.transform.DOMove(transform.position + Vector3.up * .8f, .5f).SetEase(Ease.OutSine)
                 .OnComplete(() => EnableScan(obj));
             CoreGameSignals.Instance.OnGrid?.Invoke(false);
 
