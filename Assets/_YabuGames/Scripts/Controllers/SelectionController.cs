@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using _YabuGames.Scripts.Interfaces;
 using _YabuGames.Scripts.Objects;
 using _YabuGames.Scripts.Signals;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace _YabuGames.Scripts.Controllers
 {
@@ -11,6 +14,9 @@ namespace _YabuGames.Scripts.Controllers
         private Camera _cam;
         private GameObject _selectedRadio;
         private GameObject _selectedState;
+       public GraphicRaycaster m_Raycaster;
+        PointerEventData m_PointerEventData;
+       public EventSystem m_EventSystem;
 
         private void Awake()
         {
@@ -28,7 +34,7 @@ namespace _YabuGames.Scripts.Controllers
         private void Selection()
         {
             var ray = _cam.ScreenPointToRay(Input.mousePosition);
-            
+            if (m_EventSystem.IsPointerOverGameObject()) return;
             if (Physics.Raycast(ray, out var hit))
             {
                 var objectHit = hit.transform;
@@ -96,16 +102,14 @@ namespace _YabuGames.Scripts.Controllers
                         }
                     }
                 }
-                else
+            }
+            else
+            {
+                if (_selectedState)
                 {
-                    //_selectedRadio = null;
-                    if (_selectedState)
-                    {
-                        Debug.Log(objectHit.name);
-                        CoreGameSignals.Instance.OnUpgrade?.Invoke(false);
-                        _selectedState.GetComponent<IInteractable>().Select();
-                        _selectedState = null;
-                    }
+                    CoreGameSignals.Instance.OnUpgrade?.Invoke(false);
+                    _selectedState.GetComponent<IInteractable>().Select();
+                    _selectedState = null;
                 }
             }
         }
