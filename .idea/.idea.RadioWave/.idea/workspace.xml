@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b60ceb5f-3769-40b7-8506-879c7878c827" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_2.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Objects/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Objects/State.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,23 +26,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/buraktunc/Library/Application Support/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/buraktunc/Library/Application Support/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
-      &quot;/Users/buraktunc/.local/share/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/yavuzozsoy/Library/Application Support/JetBrains/Rider2022.3/resharper-host/DecompilerCache",
+      "/Users/yavuzozsoy/Library/Application Support/JetBrains/Rider2022.3/resharper-host/SourcesCache",
+      "/Users/yavuzozsoy/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2021.3.14f1/Unity.app/Contents/MacOS/Unity" />
@@ -90,6 +93,7 @@
       <workItem from="1678442087669" duration="17773000" />
       <workItem from="1678476962669" duration="1725000" />
       <workItem from="1678699603765" duration="4653000" />
+      <workItem from="1678705614230" duration="472000" />
     </task>
     <servers />
   </component>
