@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b60ceb5f-3769-40b7-8506-879c7878c827" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +90,7 @@
       <workItem from="1678442087669" duration="17773000" />
       <workItem from="1678476962669" duration="1725000" />
       <workItem from="1678699603765" duration="4653000" />
-      <workItem from="1678705614230" duration="1020000" />
+      <workItem from="1678705614230" duration="1745000" />
     </task>
     <servers />
   </component>
