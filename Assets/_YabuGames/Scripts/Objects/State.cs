@@ -15,6 +15,7 @@ namespace _YabuGames.Scripts.Objects
         private GameObject _selectionEffect;
         private MeshRenderer _renderer;
         private readonly List<Material> _defaultMaterials = new List<Material>();
+        private readonly List<Material[]> _childMaterials = new List<Material[]>();
         private bool _isOnline;
         private bool _isSelected;
         private bool _hasRadio;
@@ -29,6 +30,22 @@ namespace _YabuGames.Scripts.Objects
             {
                 var mat = new Material(t);
                 _defaultMaterials.Add(mat);
+            }
+
+            if(transform.childCount<1) return;
+            
+            for (var i = 0; i < transform.childCount; i++)
+            {
+                if (i <= 0) continue;
+                
+                var mesh = transform.GetChild(i).GetComponent<MeshRenderer>();
+                var materials = new Material[mesh.materials.Length];
+                for (var j = 0; j < mesh.materials.Length; j++)
+                {
+                    materials[j] = new Material(mesh.materials[j]);
+                }
+                _childMaterials.Add(materials);
+                
             }
 
             if (transform.childCount>0)
@@ -69,6 +86,16 @@ namespace _YabuGames.Scripts.Objects
                 t.color = offRangeMat.color;
             }
 
+            for (var i = 0; i < transform.childCount; i++)
+            {
+                if (i <= 0) continue;
+                var mesh = transform.GetChild(i).GetComponent<MeshRenderer>();
+                foreach (var mat in mesh.materials)
+                {
+                    mat.color = offRangeMat.color;
+                }
+            }
+
             StartCoroutine(FirstContact());
         }
 
@@ -104,7 +131,6 @@ namespace _YabuGames.Scripts.Objects
         }
         public void Interact(GameObject obj)
         {
-            Debug.Log("interacted");
             obj.GetComponent<RadioScanner>().SetScanningBool(false);
             var radioController = obj.GetComponent<RadioController>();
             _radioLevel = radioController.radioLevel;
@@ -126,13 +152,40 @@ namespace _YabuGames.Scripts.Objects
                 {
                     _renderer.materials[i].DOColor(_defaultMaterials[i].color, .7f).SetEase(Ease.InSine).SetDelay(delay);
                 }
+
+                if (transform.childCount == 0) return;
+                
+                for (var i = 0; i < transform.childCount; i++)
+                {
+                    if (i <= 0) continue;
+                    var mesh = transform.GetChild(i).GetComponent<MeshRenderer>();
+                    for (var j = 0; j < mesh.materials.Length; j++)
+                    {
+                        mesh.materials[j].DOColor(_childMaterials[i-1][j].color, .7f).SetEase(Ease.InSine)
+                            .SetDelay(delay+.4f);
+                    }
+                }
+                
             }
             else
             {
                 _isOnline = false;
                 for (var i = 0; i < _renderer.materials.Length; i++)
                 {
-                    _renderer.materials[i].DOColor(offRangeMat.color, .7f).SetEase(Ease.InSine).SetDelay(delay);
+                    _renderer.materials[i].DOColor(offRangeMat.color, .7f).SetEase(Ease.OutSine).SetDelay(delay);
+                }
+                
+                if (transform.childCount < 1) return;
+                
+                for (var i = 0; i < transform.childCount; i++)
+                {
+                    if(i <= 0) continue;
+                    var mesh = transform.GetChild(i).GetComponent<MeshRenderer>();
+                    for (var j = 0; j < mesh.materials.Length; j++)
+                    {
+                        mesh.materials[j].DOColor(offRangeMat.color, .7f).SetEase(Ease.InSine)
+                            .SetDelay(delay+.2f);
+                    }
                 }
             }
          

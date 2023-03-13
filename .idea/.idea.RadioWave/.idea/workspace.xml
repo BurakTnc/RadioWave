@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b60ceb5f-3769-40b7-8506-879c7878c827" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Recordings/movie_001.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RadioWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RadioWave/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Installer/Built-in.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Mobile.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Nature.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/One Directional Light.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Particles.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/SpeedTree.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Sprites.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Standard.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Terrain.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/TextMesh Pro v3.0.6.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Unity Standard Assets.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Unlit.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/JMO Assets/Toony Colors Pro/Demo TCP2/Cat Demo URP.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Tile Prefabs/river_corner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Tile Prefabs/river_corner.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Tile Prefabs/river_start.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Tile Prefabs/river_start.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Tile Prefabs/stone_mountain.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Tile Prefabs/stone_mountain.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Objects/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Objects/State.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +90,7 @@
       <workItem from="1678362724297" duration="5000" />
       <workItem from="1678442087669" duration="17773000" />
       <workItem from="1678476962669" duration="1725000" />
+      <workItem from="1678699603765" duration="4326000" />
     </task>
     <servers />
   </component>
