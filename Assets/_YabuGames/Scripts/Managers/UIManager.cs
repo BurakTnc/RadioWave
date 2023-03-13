@@ -1,4 +1,6 @@
 using System;
+using _YabuGames.Scripts.Controllers;
+using _YabuGames.Scripts.Objects;
 using _YabuGames.Scripts.Signals;
 using DG.Tweening;
 using TMPro;
@@ -127,6 +129,30 @@ namespace _YabuGames.Scripts.Managers
         {
             mainPanel.SetActive(true);
             HapticManager.Instance.PlayLightHaptic();
+        }
+
+        public void AddTowerButton()
+        {
+            if (!SelectionController.Instance.selectedState) 
+                return;
+            
+            if (SelectionController.Instance.selectedState.TryGetComponent(out State state))
+            {
+                GameManager.Instance.money -= state.GiveBuyCost();
+                state.AddTower();
+            }
+        }
+
+        public void UpgradeButton()
+        {
+            if (!SelectionController.Instance.selectedState) 
+                return;
+            
+            if (SelectionController.Instance.selectedState.TryGetComponent(out State state))
+            {
+                GameManager.Instance.money -= state.GiveBuyCost();
+                state.AddTower();
+            }
         }
 
     }

@@ -5,21 +5,29 @@ using _YabuGames.Scripts.Objects;
 using _YabuGames.Scripts.Signals;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _YabuGames.Scripts.Controllers
 {
     public class SelectionController : MonoBehaviour
     {
-        private Camera _cam;
-        private GameObject _selectedRadio;
-        private GameObject _selectedState;
-       public GraphicRaycaster m_Raycaster;
-        PointerEventData m_PointerEventData;
-       public EventSystem m_EventSystem;
+        public static SelectionController Instance;
+        
+        private Camera _cam; 
+        [HideInInspector] public GameObject selectedRadio;
+        [HideInInspector] public GameObject selectedState;
+        public EventSystem m_EventSystem;
 
         private void Awake()
         {
+            if (Instance != this && Instance != null) 
+            {
+                Destroy(this);
+                return;
+            }
+
+            Instance = this;
             _cam=Camera.main;
         }
 
@@ -41,45 +49,45 @@ namespace _YabuGames.Scripts.Controllers
 
                 if (objectHit.TryGetComponent(out RadioController radio))
                 {
-                    if (_selectedRadio)
+                    if (selectedRadio)
                     {
-                        _selectedRadio = null;
+                        selectedRadio = null;
                         CoreGameSignals.Instance.OnGrid?.Invoke(false);
                         return;
                     }
                     
-                    _selectedRadio = radio.gameObject;
-                    if (_selectedState)
+                    selectedRadio = radio.gameObject;
+                    if (selectedState)
                     {
                         CoreGameSignals.Instance.OnUpgrade?.Invoke(false);
-                        _selectedState.GetComponent<IInteractable>().Select();
-                        _selectedState = null;
+                        selectedState.GetComponent<IInteractable>().Select();
+                        selectedState = null;
                     }
                     CoreGameSignals.Instance.OnGrid?.Invoke(true);
                 }
 
                 if (objectHit.TryGetComponent(out IInteractable state))
                 {
-                    if (_selectedRadio)
+                    if (selectedRadio)
                     {
-                        state.Interact(_selectedRadio);
-                        _selectedRadio = null;
+                        state.Interact(selectedRadio);
+                        selectedRadio = null;
                     }
                     else
                     {
-                        if (_selectedState)
+                        if (selectedState)
                         {
-                            _selectedState.GetComponent<IInteractable>().Select();
+                            selectedState.GetComponent<IInteractable>().Select();
                             var id = objectHit.gameObject.GetInstanceID();
-                            var currentID = _selectedState.GetInstanceID();
+                            var currentID = selectedState.GetInstanceID();
                             var isSame = id == currentID;
-                            _selectedState = null;
+                            selectedState = null;
                             CoreGameSignals.Instance.OnUpgrade?.Invoke(false);
 
                             if(isSame) return;
                             
-                            _selectedState = objectHit.gameObject;
-                            var stateController = _selectedState.GetComponent<State>();
+                            selectedState = objectHit.gameObject;
+                            var stateController = selectedState.GetComponent<State>();
                             var upgradeCost = stateController.GiveUpgradeCost();
                             var hasRadio = stateController.GiveRadioBool();
                             
@@ -90,9 +98,9 @@ namespace _YabuGames.Scripts.Controllers
                         }
                         else
                         {
-                            _selectedState = objectHit.gameObject;
+                            selectedState = objectHit.gameObject;
                             
-                            var stateController = _selectedState.GetComponent<State>();
+                            var stateController = selectedState.GetComponent<State>();
                             var upgradeCost = stateController.GiveUpgradeCost();
                             var hasRadio = stateController.GiveRadioBool();
                             
@@ -105,11 +113,17 @@ namespace _YabuGames.Scripts.Controllers
             }
             else
             {
-                if (_selectedState)
+                if (selectedState)
                 {
                     CoreGameSignals.Instance.OnUpgrade?.Invoke(false);
-                    _selectedState.GetComponent<IInteractable>().Select();
-                    _selectedState = null;
+                    selectedState.GetComponent<IInteractable>().Select();
+                    selectedState = null;
+                }
+
+                if (selectedRadio)
+                {
+                    selectedRadio = null;
+                    CoreGameSignals.Instance.OnGrid?.Invoke(false);
                 }
             }
         }

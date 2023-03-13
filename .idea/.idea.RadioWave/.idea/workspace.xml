@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b60ceb5f-3769-40b7-8506-879c7878c827" name="Changes" comment="" />
+    <list default="true" id="b60ceb5f-3769-40b7-8506-879c7878c827" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Procedural Worlds/Frameworks/Common5/Editor/PWCommonMenuAG.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Spawnables/Radio_1.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Spawnables/Radio_1.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Spawnables/Radio_2.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Spawnables/Radio_2.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Spawnables/Radio_3.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Spawnables/Radio_3.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RadioWave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RadioWave/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Prefabs/Radio_3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Controllers/SelectionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Controllers/SelectionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Managers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Objects/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_YabuGames/Scripts/Objects/State.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,23 +40,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/Users/yavuzozsoy/Library/Application Support/JetBrains/Rider2022.3/resharper-host/DecompilerCache",
-      "/Users/yavuzozsoy/Library/Application Support/JetBrains/Rider2022.3/resharper-host/SourcesCache",
-      "/Users/yavuzozsoy/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/yavuzozsoy/Library/Application Support/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/yavuzozsoy/Library/Application Support/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
+      &quot;/Users/yavuzozsoy/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2021.3.14f1/Unity.app/Contents/MacOS/Unity" />

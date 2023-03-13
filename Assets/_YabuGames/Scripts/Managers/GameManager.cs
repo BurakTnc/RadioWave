@@ -7,7 +7,7 @@ namespace _YabuGames.Scripts.Managers
     {
         public static GameManager Instance;
 
-        private int _money;
+        public int money;
 
         private void Awake()
         {
@@ -50,22 +50,22 @@ namespace _YabuGames.Scripts.Managers
 
         private void GetValues()
         {
-            _money = PlayerPrefs.GetInt("money", 0);
+            money = PlayerPrefs.GetInt("money", 0);
         }
 
         private void Save()
         {
-            PlayerPrefs.SetInt("money",_money);
+            PlayerPrefs.SetInt("money",money);
         }
 
         public void ArrangeMoney(int value)
         {
-            _money += value;
+            money += value;
         }
 
         public int GetMoney()
         {
-            return _money < 0 ? 0 : _money;
+            return money < 0 ? 0 : money;
         }
     }
 }

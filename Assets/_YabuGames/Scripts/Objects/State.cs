@@ -21,6 +21,7 @@ namespace _YabuGames.Scripts.Objects
         private bool _hasRadio;
         private int _radioLevel;
         private int _upgradePrice;
+        private int _buyPrice = 500;
         private bool _firstContact;
 
         private void Awake()
@@ -191,6 +192,17 @@ namespace _YabuGames.Scripts.Objects
          
         }
 
+        public void ResetStats()
+        {
+            
+        }
+        public void AddTower()
+        {
+            var tower = Instantiate(Resources.Load<GameObject>("Spawnables/Radio_1"));
+            tower.transform.position = transform.position + Vector3.up * 0.2f;
+            tower.transform.DOScaleY(.2f, .5f).SetLoops(2, LoopType.Yoyo);
+            Interact(tower);
+        }
         public void Select()
         {
             _isSelected = !_isSelected;
@@ -218,6 +230,7 @@ namespace _YabuGames.Scripts.Objects
         }
 
         public int GiveUpgradeCost() => _upgradePrice;
+        public int GiveBuyCost() => _buyPrice;
         public bool GiveRadioBool() => _hasRadio;
         public bool IsOnline() => _isOnline;
     }
