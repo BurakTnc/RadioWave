@@ -12,7 +12,7 @@ namespace _YabuGames.Scripts.Controllers
     public class RadioScanner : MonoBehaviour
     {
         [SerializeField] private LayerMask layer;
-        [FormerlySerializedAs("scanPeriod")] [SerializeField] private float scanParticleSize = 300;
+        [SerializeField] private float scanParticleSize = 300;
         [SerializeField] private float areaGrowingMultiplier = 0.01f;
         [SerializeField] private GameObject scanParticle;
         [SerializeField] private float scanSize = 50;
