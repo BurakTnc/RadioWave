@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using _YabuGames.Scripts.Interfaces;
+using _YabuGames.Scripts.Managers;
 using _YabuGames.Scripts.Objects;
+using _YabuGames.Scripts.Signals;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -86,7 +88,7 @@ namespace _YabuGames.Scripts.Controllers
             particle.transform.DOScale(Vector3.one * scanParticleSize / 100, 5).SetEase(Ease.InSine);
         }
 
-        private void StopScanning()
+        public void StopScanning()
         {
             var delay = 0f;
             for (var i = _onlineStates.Count-1; i > -1; i--)

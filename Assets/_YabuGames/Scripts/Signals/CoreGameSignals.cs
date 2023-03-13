@@ -17,6 +17,7 @@ namespace _YabuGames.Scripts.Signals
         public UnityAction<bool> OnUpgrade= delegate { };
         public UnityAction<int, bool> GetUpgradeStats = delegate { };
         public UnityAction<bool> OnGrid = delegate { };
+        public UnityAction OnUpdateStats = delegate { };
 
 
         #region Singleton

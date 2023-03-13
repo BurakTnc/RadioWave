@@ -10,6 +10,7 @@ namespace _YabuGames.Scripts.Controllers
     public class RadioController : MonoBehaviour,IMergeable
     {
 
+        public GameObject state;
         public int radioLevel = 1;
 
         [SerializeField] private GameObject[] radios;

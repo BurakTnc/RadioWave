@@ -19,6 +19,7 @@ namespace _YabuGames.Scripts.Managers
         [SerializeField] private TextMeshProUGUI upgradePriceText, buyPriceText;
         [SerializeField] private Button upgradeButton, buyButton;
 
+        private int _buyPrice, _upgradePrice;
         private bool _isUpgradeOpen;
 
 
@@ -60,6 +61,8 @@ namespace _YabuGames.Scripts.Managers
             CoreGameSignals.Instance.OnGameStart += OnGameStart;
             CoreGameSignals.Instance.OnUpgrade += SetUpgradePanel;
             CoreGameSignals.Instance.GetUpgradeStats += SetUpgradeStats;
+            CoreGameSignals.Instance.OnUpdateStats += SetMoneyTexts;
+            CoreGameSignals.Instance.OnUpdateStats += CheckButtonStats;
         }
         
         private void UnSubscribe()
@@ -67,28 +70,24 @@ namespace _YabuGames.Scripts.Managers
             CoreGameSignals.Instance.OnGameStart -= OnGameStart;
             CoreGameSignals.Instance.OnUpgrade -= SetUpgradePanel;
             CoreGameSignals.Instance.GetUpgradeStats -= SetUpgradeStats;
+            CoreGameSignals.Instance.OnUpdateStats -= SetMoneyTexts;
+            CoreGameSignals.Instance.OnUpdateStats -= CheckButtonStats;
         }
 
         #endregion
-
-        private void SetBool()
-        {
-            //_isUpgradeOpen = !_isUpgradeOpen;
-        }
+        
         private void SetUpgradePanel(bool isOpen)
         {
             _isUpgradeOpen = isOpen;
             upgradePanel.transform.DOKill();
             if (_isUpgradeOpen)
             {
-                upgradePanel.GetComponent<RectTransform>().DOAnchorPosY(-137, .5f).SetEase(Ease.OutBack)
-                    .OnComplete(SetBool);
+                upgradePanel.GetComponent<RectTransform>().DOAnchorPosY(-137, .5f).SetEase(Ease.OutBack);
             }
             else
             {
-                
-                upgradePanel.GetComponent<RectTransform>().DOAnchorPosY(-350, .5f).SetEase(Ease.InBack)
-                    .OnComplete(SetBool);
+
+                upgradePanel.GetComponent<RectTransform>().DOAnchorPosY(-350, .5f).SetEase(Ease.InBack);
             }
         }
         private void OnGameStart()
@@ -109,15 +108,22 @@ namespace _YabuGames.Scripts.Managers
             }
         }
 
+        private void CheckButtonStats()
+        {
+            buyButton.interactable = GameManager.Instance.money >= _buyPrice;
+            upgradeButton.interactable = GameManager.Instance.money >= _upgradePrice;
+        }
         private void SetUpgradeStats(int upgradePrice,bool hasRadio)
         {
             buyButton.gameObject.SetActive(!hasRadio);
             upgradeButton.gameObject.SetActive(hasRadio);
             upgradePriceText.text = "";
             buyPriceText.text = "500";
+            _buyPrice = 500;
             if(!hasRadio) return;
             buyPriceText.text = "";
             upgradePriceText.text = upgradePrice.ToString();
+            _upgradePrice = upgradePrice;
         }
         public void PlayButton()
         {
@@ -131,6 +137,10 @@ namespace _YabuGames.Scripts.Managers
             HapticManager.Instance.PlayLightHaptic();
         }
 
+        public void CloseButton()
+        {
+            SetUpgradePanel(false);
+        }
         public void AddTowerButton()
         {
             if (!SelectionController.Instance.selectedState) 
@@ -150,8 +160,8 @@ namespace _YabuGames.Scripts.Managers
             
             if (SelectionController.Instance.selectedState.TryGetComponent(out State state))
             {
-                GameManager.Instance.money -= state.GiveBuyCost();
-                state.AddTower();
+                GameManager.Instance.money -= state.GiveUpgradeCost();
+                state.Upgrade();
             }
         }
 

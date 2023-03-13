@@ -70,6 +70,8 @@ namespace _YabuGames.Scripts.Controllers
                 {
                     if (selectedRadio)
                     {
+                        var radioController = selectedRadio.GetComponent<RadioController>();
+                        //radioController.state = objectHit.gameObject;
                         state.Interact(selectedRadio);
                         selectedRadio = null;
                     }

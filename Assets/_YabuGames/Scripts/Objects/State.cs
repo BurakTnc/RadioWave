@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _YabuGames.Scripts.Controllers;
 using _YabuGames.Scripts.Interfaces;
+using _YabuGames.Scripts.Managers;
 using _YabuGames.Scripts.Signals;
 using DG.Tweening;
 using UnityEngine;
@@ -21,8 +22,11 @@ namespace _YabuGames.Scripts.Objects
         private bool _hasRadio;
         private int _radioLevel;
         private int _upgradePrice;
-        private int _buyPrice = 500;
+        private readonly int _buyPrice = 500;
         private bool _firstContact;
+        private Vector3 _startPoS;
+        private GameObject _currentTower;
+        private float _timer;
 
         private void Awake()
         {
@@ -82,6 +86,7 @@ namespace _YabuGames.Scripts.Objects
 
         private void Start()
         {
+            _startPoS = transform.position;
             foreach (var t in _renderer.materials)
             {
                 t.color = offRangeMat.color;
@@ -97,7 +102,26 @@ namespace _YabuGames.Scripts.Objects
                 }
             }
 
+            _timer = 3;
             StartCoroutine(FirstContact());
+        }
+
+        private void Update()
+        {
+            if (_isOnline)
+            {
+                if (_timer <= 0)
+                {
+                    _timer += 3;
+                    GameManager.Instance.money += 1;
+                    PoolManager.Instance.GetMoneyParticle(transform.position+Vector3.up*.5f,1); 
+                    CoreGameSignals.Instance.OnUpdateStats?.Invoke();
+                }
+                _timer -= Time.deltaTime;
+                _timer = Math.Clamp(_timer, 0, 3);
+            }
+
+            
         }
 
         private IEnumerator FirstContact()
@@ -132,15 +156,29 @@ namespace _YabuGames.Scripts.Objects
         }
         public void Interact(GameObject obj)
         {
+            _currentTower = obj;
             obj.GetComponent<RadioScanner>().SetScanningBool(false);
             var radioController = obj.GetComponent<RadioController>();
             _radioLevel = radioController.radioLevel;
-            _upgradePrice = _radioLevel * 500;
+            _upgradePrice = _radioLevel * 1000;
             _hasRadio = true;
             GetStats(_upgradePrice,_radioLevel,_hasRadio);
             obj.transform.DOMove(transform.position + Vector3.up *0.2f, .5f).SetEase(Ease.OutSine)
                 .OnComplete(() => EnableScan(obj));
             CoreGameSignals.Instance.OnGrid?.Invoke(false);
+            CoreGameSignals.Instance.GetUpgradeStats?.Invoke(_upgradePrice,_hasRadio);
+            
+            if (!radioController.state) 
+            {
+                radioController.state = this.gameObject;
+                return;
+            }
+
+            if (radioController.state)
+            {
+                radioController.state.GetComponent<State>().ResetStats();
+                radioController.state = this.gameObject;
+            }
 
         }
 
@@ -192,15 +230,30 @@ namespace _YabuGames.Scripts.Objects
          
         }
 
-        public void ResetStats()
+        private void ResetStats()
         {
-            
+            _radioLevel = 0;
+            _upgradePrice = 0;
+            _hasRadio = false;
         }
         public void AddTower()
         {
             var tower = Instantiate(Resources.Load<GameObject>("Spawnables/Radio_1"));
-            tower.transform.position = transform.position + Vector3.up * 0.2f;
+            tower.transform.position = transform.position+Vector3.down*.2f;
             tower.transform.DOScaleY(.2f, .5f).SetLoops(2, LoopType.Yoyo);
+            Interact(tower);
+        }
+
+        public void Upgrade()
+        {
+            if (_currentTower.TryGetComponent(out RadioScanner scanner))
+            {
+                scanner.StopScanning();
+            }
+            Destroy(_currentTower);
+            var tower = Instantiate(Resources.Load<GameObject>($"Spawnables/Radio_{_radioLevel+1}"));
+            tower.transform.position = transform.position + Vector3.down * 0.3f;
+            tower.transform.DOScaleZ(.3f, .2f).SetLoops(2, LoopType.Yoyo);
             Interact(tower);
         }
         public void Select()
@@ -208,13 +261,13 @@ namespace _YabuGames.Scripts.Objects
             _isSelected = !_isSelected;
             if (_isSelected)
             {
-                //transform.DOMoveY(.1f, .3f).SetEase(Ease.OutBack).SetRelative(true);
+                transform.DOMove(_startPoS + Vector3.up * .1f, .3f).SetEase(Ease.OutBack);
                 if(!_selectionEffect) return;
                 _selectionEffect.SetActive(true);
             }
             else
             {
-                //transform.DOMoveY(-.1f, .3f).SetEase(Ease.InBack).SetRelative(true);
+                transform.DOMove(_startPoS, .3f).SetEase(Ease.InBack);
                 if(!_selectionEffect) return;
                 _selectionEffect.SetActive(false);
             }

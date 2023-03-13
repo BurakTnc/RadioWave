@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _YabuGames.Scripts.Managers
 {
@@ -7,9 +10,10 @@ namespace _YabuGames.Scripts.Managers
     {
         public static PoolManager Instance;
         
+    [FormerlySerializedAs("firstParticle")]
     [Header("                               // Set Particles Stop Action To DISABLE //")]
     [Space(20)]
-        [SerializeField] private List<GameObject> firstParticle = new List<GameObject>();
+        [SerializeField] private List<GameObject> moneyParticle = new List<GameObject>();
         [SerializeField] private List<GameObject> secondParticle = new List<GameObject>();
         [SerializeField] private List<GameObject> thirdParticle = new List<GameObject>();
         [SerializeField] private List<GameObject> fourthParticle = new List<GameObject>();
@@ -30,13 +34,20 @@ namespace _YabuGames.Scripts.Managers
             
         }
 
-        public void GetFirstParticle(Vector3 desiredPos)
+        public void GetMoneyParticle(Vector3 desiredPos, int value)
         {
-            var temp = firstParticle[0];
-            firstParticle.Remove(temp);
+            var temp = moneyParticle[0];
+            temp.transform.localScale = Vector3.one*.6f;
+            moneyParticle.Remove(temp);
             temp.transform.position = desiredPos;
+            if (temp.TryGetComponent(out TextMeshPro tmp))
+            {
+                tmp.text = "$" + value;
+            }
             temp.SetActive(true);
-            firstParticle.Add(temp);
+            temp.transform.DOMoveY(3, 1).SetEase(Ease.InSine);
+            temp.transform.DOScale(Vector3.zero, .9f).SetEase(Ease.InSine);      
+            moneyParticle.Add(temp);
             
         }
         public void GetSecondParticle(Vector3 desiredPos)
