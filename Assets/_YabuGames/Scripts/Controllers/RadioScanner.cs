@@ -82,7 +82,7 @@ namespace _YabuGames.Scripts.Controllers
             _particleTimer += 3f;
             var particle = Instantiate(scanParticle);
             particle.transform.localScale = Vector3.zero;
-            particle.transform.position = transform.position;
+            particle.transform.position = transform.position + Vector3.up *0.1f;
             particle.transform.DOScale(Vector3.one * scanParticleSize / 100, 5).SetEase(Ease.InSine);
         }
 
