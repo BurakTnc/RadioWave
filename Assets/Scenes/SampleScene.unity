@@ -10856,18 +10856,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 94593551}
-    - target: {fileID: 848549796353856802, guid: 55194f5fdb29940e4ab6ac79f69e6132, type: 3}
-      propertyPath: m_Size.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 848549796353856802, guid: 55194f5fdb29940e4ab6ac79f69e6132, type: 3}
-      propertyPath: m_Size.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 848549796353856802, guid: 55194f5fdb29940e4ab6ac79f69e6132, type: 3}
-      propertyPath: m_Size.z
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 848549796353856808, guid: 55194f5fdb29940e4ab6ac79f69e6132, type: 3}
       propertyPath: m_Name
       value: Radio_3
@@ -10922,7 +10910,7 @@ PrefabInstance:
       objectReference: {fileID: 94593551}
     - target: {fileID: 7289428017052281426, guid: 55194f5fdb29940e4ab6ac79f69e6132, type: 3}
       propertyPath: m_VersionIndex
-      value: 156
+      value: 159
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55194f5fdb29940e4ab6ac79f69e6132, type: 3}

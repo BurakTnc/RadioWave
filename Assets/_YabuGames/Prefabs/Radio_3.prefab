@@ -48,7 +48,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.788553, y: 4.283257, z: 10.61}
+  m_Size: {x: 3, y: 3, z: 10}
   m_Center: {x: -0.0000009536743, y: -3.55754e-21, z: 0.0000004768373}
 --- !u!114 &848549796353856805
 MonoBehaviour:
@@ -26129,7 +26129,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 153
+  m_VersionIndex: 159
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
