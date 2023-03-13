@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 878983216328861544}
   - component: {fileID: 2220614918756190009}
   - component: {fileID: 461979306365024193}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: stone_mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,13 +95,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671463163480000189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6de00f5fb1094489b3e23de565a5b2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioPosition: {fileID: 0}
-  onRangeMat: {fileID: 0}
   offRangeMat: {fileID: 2100000, guid: 9333a29f89a4d4aa396e383716451b14, type: 2}
 --- !u!64 &461979306365024193
 MeshCollider:
@@ -112,7 +110,7 @@ MeshCollider:
   m_GameObject: {fileID: 1671463163480000189}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30

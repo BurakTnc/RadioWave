@@ -30,8 +30,12 @@ namespace _YabuGames.Scripts.Objects
                 var mat = new Material(t);
                 _defaultMaterials.Add(mat);
             }
+
+            if (transform.childCount>0)
+            {
+                _selectionEffect = transform.GetChild(0).gameObject;
+            }
             
-            _selectionEffect = transform.GetChild(0).gameObject;
         }
 
         private void OnEnable()
@@ -78,11 +82,13 @@ namespace _YabuGames.Scripts.Objects
             if (onGrid)
             {
                 //transform.DOMoveY(.1f, .3f).SetEase(Ease.OutBack).SetRelative(true);
+                if(!_selectionEffect) return;
                 _selectionEffect.SetActive(true);
             }
             else
             {
                 //transform.DOMoveY(-.1f, .3f).SetEase(Ease.InBack).SetRelative(true);
+                if(!_selectionEffect) return;
                 _selectionEffect.SetActive(false);
             }
         }
@@ -138,11 +144,13 @@ namespace _YabuGames.Scripts.Objects
             if (_isSelected)
             {
                 //transform.DOMoveY(.1f, .3f).SetEase(Ease.OutBack).SetRelative(true);
+                if(!_selectionEffect) return;
                 _selectionEffect.SetActive(true);
             }
             else
             {
                 //transform.DOMoveY(-.1f, .3f).SetEase(Ease.InBack).SetRelative(true);
+                if(!_selectionEffect) return;
                 _selectionEffect.SetActive(false);
             }
         }
