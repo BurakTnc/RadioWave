@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 6229770629617828780}
   - component: {fileID: 7051314255731575817}
   - component: {fileID: 5061970927392635075}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: water_rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

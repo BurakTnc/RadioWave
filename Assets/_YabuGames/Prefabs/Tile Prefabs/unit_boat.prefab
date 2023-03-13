@@ -426,7 +426,8 @@ GameObject:
   - component: {fileID: 8656986634895971244}
   - component: {fileID: 5731975044557986825}
   - component: {fileID: 7523517881470462147}
-  m_Layer: 0
+  - component: {fileID: 2047392214}
+  m_Layer: 7
   m_Name: unit_boat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,6 +505,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2047392214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8315927321449531670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de00f5fb1094489b3e23de565a5b2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offRangeMat: {fileID: 2100000, guid: 9333a29f89a4d4aa396e383716451b14, type: 2}
 --- !u!1 &8373460211317825584
 GameObject:
   m_ObjectHideFlags: 0

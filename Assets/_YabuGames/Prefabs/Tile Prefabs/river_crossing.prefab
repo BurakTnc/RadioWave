@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6504091633455127456}
   - component: {fileID: 7920977922773603333}
   - component: {fileID: 5334514024013963471}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: river_crossing
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5586681530280419028}
   - component: {fileID: 8802350161747939697}
   - component: {fileID: 6759003211639973307}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: river_cornerSharp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

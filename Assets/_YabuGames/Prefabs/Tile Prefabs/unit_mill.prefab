@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4285661317698493114}
   - component: {fileID: 925034346614756639}
   - component: {fileID: 3112715905215422933}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: unit_mill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5439396365994540494}
   - component: {fileID: 7825120235366074628}
   - component: {fileID: 46956821380084406}
-  - component: {fileID: 1045542855582497816}
+  - component: {fileID: 5817111030945473639}
   m_Layer: 7
   m_Name: river_corner
   m_TagString: Untagged
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offRangeMat: {fileID: 2100000, guid: 9333a29f89a4d4aa396e383716451b14, type: 2}
---- !u!64 &1045542855582497816
+--- !u!64 &5817111030945473639
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

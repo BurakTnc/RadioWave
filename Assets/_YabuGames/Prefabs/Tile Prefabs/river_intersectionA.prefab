@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6953547737751731162}
   - component: {fileID: 6327607255988876415}
   - component: {fileID: 8085326992644653237}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: river_intersectionA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
