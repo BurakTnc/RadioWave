@@ -17,10 +17,11 @@ namespace _YabuGames.Scripts.Managers
         [SerializeField] private TextMeshProUGUI[] moneyText;
         [SerializeField] private GameObject upgradePanel;
         [SerializeField] private TextMeshProUGUI upgradePriceText, buyPriceText;
-        [SerializeField] private Button upgradeButton, buyButton;
+        [SerializeField] private Button upgradeButton, buyButton, incomeButton;
 
         private int _buyPrice, _upgradePrice;
         private bool _isUpgradeOpen;
+        private int _incomePrice;
 
 
         private void Awake()
@@ -112,6 +113,7 @@ namespace _YabuGames.Scripts.Managers
         {
             buyButton.interactable = GameManager.Instance.money >= _buyPrice;
             upgradeButton.interactable = GameManager.Instance.money >= _upgradePrice;
+            incomeButton.interactable = GameManager.Instance.money >= _incomePrice;
         }
         private void SetUpgradeStats(int upgradePrice,bool hasRadio)
         {
@@ -137,6 +139,18 @@ namespace _YabuGames.Scripts.Managers
             HapticManager.Instance.PlayLightHaptic();
         }
 
+        public void IncomeButton()
+        {
+            if (!SelectionController.Instance.selectedState) 
+                return;
+            
+            if (SelectionController.Instance.selectedState.TryGetComponent(out State state))
+            {
+                GameManager.Instance.money -= state.GiveIncomeCost();
+                state.ChanceIncome();
+            }
+            CoreGameSignals.Instance.OnUpdateStats?.Invoke();
+        }
         public void CloseButton()
         {
             SetUpgradePanel(false);
@@ -151,6 +165,7 @@ namespace _YabuGames.Scripts.Managers
                 GameManager.Instance.money -= state.GiveBuyCost();
                 state.AddTower();
             }
+            CoreGameSignals.Instance.OnUpdateStats?.Invoke();
         }
 
         public void UpgradeButton()
@@ -163,6 +178,7 @@ namespace _YabuGames.Scripts.Managers
                 GameManager.Instance.money -= state.GiveUpgradeCost();
                 state.Upgrade();
             }
+            CoreGameSignals.Instance.OnUpdateStats?.Invoke();
         }
 
     }

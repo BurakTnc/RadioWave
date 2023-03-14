@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472252654fec14b1f9000308efec8142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: 0}
   radioLevel: 3
   radios:
   - {fileID: 1914991185592008854, guid: 29792db6045ff4de8929bbd255e77d2a, type: 3}
@@ -83,10 +84,10 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
-  scanParticleSize: 300
-  areaGrowingMultiplier: 0.01
+  scanParticleSize: 150
+  areaGrowingMultiplier: 0.5
   scanParticle: {fileID: 191608, guid: 087da436576d35542825d392925d79c4, type: 3}
-  scanSize: 3
+  scanSize: 1.6
 --- !u!54 &848549796353856807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26129,7 +26130,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 159
+  m_VersionIndex: 171
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

@@ -10,11 +10,10 @@ namespace _YabuGames.Scripts.Managers
     {
         public static PoolManager Instance;
         
-    [FormerlySerializedAs("firstParticle")]
     [Header("                               // Set Particles Stop Action To DISABLE //")]
     [Space(20)]
         [SerializeField] private List<GameObject> moneyParticle = new List<GameObject>();
-        [SerializeField] private List<GameObject> secondParticle = new List<GameObject>();
+        [SerializeField] private List<GameObject> zoneParticle = new List<GameObject>();
         [SerializeField] private List<GameObject> thirdParticle = new List<GameObject>();
         [SerializeField] private List<GameObject> fourthParticle = new List<GameObject>();
 
@@ -45,18 +44,26 @@ namespace _YabuGames.Scripts.Managers
                 tmp.text = "$" + value;
             }
             temp.SetActive(true);
-            temp.transform.DOMoveY(3, 1).SetEase(Ease.InSine);
+            temp.transform.DOMoveY(3, 1).SetEase(Ease.InSine).OnComplete(() => Disable(temp));
             temp.transform.DOScale(Vector3.zero, .9f).SetEase(Ease.InSine);      
             moneyParticle.Add(temp);
             
         }
-        public void GetSecondParticle(Vector3 desiredPos)
+
+        private void Disable(GameObject temp)
         {
-            var temp = secondParticle[0];
-            secondParticle.Remove(temp);
+            temp.SetActive(false);
+        }
+
+        public void GetZoneParticle(Vector3 desiredPos,float size)
+        {
+            var temp = zoneParticle[0];
+            zoneParticle.Remove(temp);
             temp.transform.position = desiredPos;
+            temp.transform.localScale = Vector3.zero;
             temp.SetActive(true);
-            secondParticle.Add(temp);
+            zoneParticle.Add(temp);
+            temp.transform.DOScale(Vector3.one * size, 4);
         }
         public void GetThirdParticle(Vector3 desiredPos)
         {

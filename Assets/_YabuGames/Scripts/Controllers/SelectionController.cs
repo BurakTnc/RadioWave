@@ -70,8 +70,10 @@ namespace _YabuGames.Scripts.Controllers
                 {
                     if (selectedRadio)
                     {
-                        var radioController = selectedRadio.GetComponent<RadioController>();
-                        //radioController.state = objectHit.gameObject;
+                        selectedState = objectHit.gameObject;
+                        var stateController = selectedState.GetComponent<State>();
+                        if(stateController.IsNoneSelectable()) 
+                            return;
                         state.Interact(selectedRadio);
                         selectedRadio = null;
                     }
@@ -106,6 +108,8 @@ namespace _YabuGames.Scripts.Controllers
                             var upgradeCost = stateController.GiveUpgradeCost();
                             var hasRadio = stateController.GiveRadioBool();
                             
+                            if(stateController.IsNoneSelectable()) 
+                                return;
                             CoreGameSignals.Instance.GetUpgradeStats?.Invoke(upgradeCost,hasRadio);
                             CoreGameSignals.Instance.OnUpgrade?.Invoke(true);
                             state.Select();

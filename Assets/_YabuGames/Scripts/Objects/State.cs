@@ -7,12 +7,14 @@ using _YabuGames.Scripts.Managers;
 using _YabuGames.Scripts.Signals;
 using DG.Tweening;
 using UnityEngine;
+
 namespace _YabuGames.Scripts.Objects
 {
     public class State : MonoBehaviour,IInteractable
     {
         [SerializeField] private Material offRangeMat;
-
+        [SerializeField] private bool noneSelectable;
+        
         private GameObject _selectionEffect;
         private MeshRenderer _renderer;
         private readonly List<Material> _defaultMaterials = new List<Material>();
@@ -27,22 +29,31 @@ namespace _YabuGames.Scripts.Objects
         private Vector3 _startPoS;
         private GameObject _currentTower;
         private float _timer;
+        private int _incomeLevel;
+        private int _incomeCost;
+        private const float _maxTimerValue = 3;
 
         private void Awake()
         {
             _renderer = GetComponent<MeshRenderer>();
+            GetMaterials();
+        }
+
+        private void GetMaterials()
+        {
             foreach (var t in _renderer.materials)
             {
                 var mat = new Material(t);
                 _defaultMaterials.Add(mat);
             }
 
-            if(transform.childCount<1) return;
-            
+            if (transform.childCount < 1) return;
+
+            _selectionEffect = transform.GetChild(0).gameObject;
             for (var i = 0; i < transform.childCount; i++)
             {
                 if (i <= 0) continue;
-                
+
                 var mesh = transform.GetChild(i).GetComponent<MeshRenderer>();
                 var materials = new Material[mesh.materials.Length];
                 for (var j = 0; j < mesh.materials.Length; j++)
@@ -50,14 +61,7 @@ namespace _YabuGames.Scripts.Objects
                     materials[j] = new Material(mesh.materials[j]);
                 }
                 _childMaterials.Add(materials);
-                
             }
-
-            if (transform.childCount>0)
-            {
-                _selectionEffect = transform.GetChild(0).gameObject;
-            }
-            
         }
 
         private void OnEnable()
@@ -86,7 +90,13 @@ namespace _YabuGames.Scripts.Objects
 
         private void Start()
         {
-            _startPoS = transform.position;
+            SetStartVariables();
+            SetDefaultMaterials();
+            StartCoroutine(FirstContact());
+        }
+
+        private void SetDefaultMaterials()
+        {
             foreach (var t in _renderer.materials)
             {
                 t.color = offRangeMat.color;
@@ -101,27 +111,28 @@ namespace _YabuGames.Scripts.Objects
                     mat.color = offRangeMat.color;
                 }
             }
+        }
 
+        private void SetStartVariables()
+        {
             _timer = 3;
-            StartCoroutine(FirstContact());
+            _startPoS = transform.position;
+            _upgradePrice = (_radioLevel) * 1000;
+            _incomeCost = (_incomeLevel + 1) * 300;
         }
 
         private void Update()
         {
-            if (_isOnline)
+            if (!_isOnline) return;
+            if (_timer <= 0)
             {
-                if (_timer <= 0)
-                {
-                    _timer += 3;
-                    GameManager.Instance.money += 1;
-                    PoolManager.Instance.GetMoneyParticle(transform.position+Vector3.up*.5f,1); 
-                    CoreGameSignals.Instance.OnUpdateStats?.Invoke();
-                }
-                _timer -= Time.deltaTime;
-                _timer = Math.Clamp(_timer, 0, 3);
+                _timer += 3;
+                GameManager.Instance.money += _radioLevel + _incomeLevel;
+                PoolManager.Instance.GetMoneyParticle(transform.position+Vector3.up*.5f,1); 
+                CoreGameSignals.Instance.OnUpdateStats?.Invoke();
             }
-
-            
+            _timer -= Time.deltaTime;
+            _timer = Math.Clamp(_timer, 0, _maxTimerValue);
         }
 
         private IEnumerator FirstContact()
@@ -133,14 +144,12 @@ namespace _YabuGames.Scripts.Objects
         {
             if (onGrid)
             {
-                //transform.DOMoveY(.1f, .3f).SetEase(Ease.OutBack).SetRelative(true);
-                if(!_selectionEffect) return;
+                if(!_selectionEffect || noneSelectable) return;
                 _selectionEffect.SetActive(true);
             }
             else
             {
-                //transform.DOMoveY(-.1f, .3f).SetEase(Ease.InBack).SetRelative(true);
-                if(!_selectionEffect) return;
+                if(!_selectionEffect || noneSelectable) return;
                 _selectionEffect.SetActive(false);
             }
         }
@@ -162,6 +171,7 @@ namespace _YabuGames.Scripts.Objects
             _radioLevel = radioController.radioLevel;
             _upgradePrice = _radioLevel * 1000;
             _hasRadio = true;
+            _incomeCost = (_incomeLevel+1) * 300;
             GetStats(_upgradePrice,_radioLevel,_hasRadio);
             obj.transform.DOMove(transform.position + Vector3.up *0.2f, .5f).SetEase(Ease.OutSine)
                 .OnComplete(() => EnableScan(obj));
@@ -258,6 +268,7 @@ namespace _YabuGames.Scripts.Objects
         }
         public void Select()
         {
+            if(!_selectionEffect || noneSelectable) return;
             _isSelected = !_isSelected;
             if (_isSelected)
             {
@@ -272,6 +283,10 @@ namespace _YabuGames.Scripts.Objects
                 _selectionEffect.SetActive(false);
             }
         }
+        public void ChanceIncome()
+        {
+            _incomeLevel ++;
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -282,10 +297,20 @@ namespace _YabuGames.Scripts.Objects
             }
         }
 
+        public void SetStateStats(bool radio,int upgradeCost,int incomeLevel)
+        {
+            _hasRadio = radio;
+            _upgradePrice = (_radioLevel+1) * 1000;
+            _incomeLevel = incomeLevel;
+            _incomeCost = (_incomeLevel + 1) * 300;
+        }
         public int GiveUpgradeCost() => _upgradePrice;
         public int GiveBuyCost() => _buyPrice;
         public bool GiveRadioBool() => _hasRadio;
         public bool IsOnline() => _isOnline;
+        public bool IsNoneSelectable() => noneSelectable;
+        public int GiveIncomeCost() => _incomeCost;
+
     }
     
 }

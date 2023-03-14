@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offRangeMat: {fileID: 2100000, guid: 9333a29f89a4d4aa396e383716451b14, type: 2}
+  noneSelectable: 1
 --- !u!64 &-8014625609656631845
 MeshCollider:
   m_ObjectHideFlags: 0

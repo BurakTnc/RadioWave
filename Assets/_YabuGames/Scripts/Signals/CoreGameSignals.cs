@@ -15,7 +15,7 @@ namespace _YabuGames.Scripts.Signals
         public UnityAction<int,bool> OnSpawnCoins=delegate { };
         public UnityAction<bool> OnDragging = delegate { };
         public UnityAction<bool> OnUpgrade= delegate { };
-        public UnityAction<int, bool> GetUpgradeStats = delegate { };
+        public UnityAction<int,bool> GetUpgradeStats = delegate { };
         public UnityAction<bool> OnGrid = delegate { };
         public UnityAction OnUpdateStats = delegate { };
 

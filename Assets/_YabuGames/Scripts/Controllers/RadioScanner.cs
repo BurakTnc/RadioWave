@@ -82,10 +82,11 @@ namespace _YabuGames.Scripts.Controllers
             
             if (_particleTimer > 0) return;
             _particleTimer += 3f;
-            var particle = Instantiate(scanParticle);
-            particle.transform.localScale = Vector3.zero;
-            particle.transform.position = transform.position + Vector3.up *0.1f;
-            particle.transform.DOScale(Vector3.one * scanParticleSize / 100, 5).SetEase(Ease.InSine);
+            PoolManager.Instance.GetZoneParticle(transform.position + Vector3.up *0.1f,scanParticleSize / 100);
+            // var particle = Instantiate(scanParticle);
+            // particle.transform.localScale = Vector3.zero;
+            // particle.transform.position = transform.position + Vector3.up *0.1f;
+            // particle.transform.DOScale(Vector3.one * scanParticleSize / 100, 5).SetEase(Ease.InSine);
         }
 
         public void StopScanning()
